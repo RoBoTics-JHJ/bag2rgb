@@ -10,11 +10,12 @@ python bag2rgb.py --dir [.bag files's Directory] --imgsize [Extracted Image's Si
 
 
 ```bash
-[Directory]
-  ├─*.bag
+📁 [Directory]
+  ├─ *.bag
   │
-  ├─[.bag filename]_IAMGE      // IMAGE dir Will be created
-  │  └─[.bag filename]_1.png
-  │  └─[.bag filename]_2.png
-  ├─[.bag filename]_VIDEO.avi   // VIDEO Will be created
+  ├─📁 [.bag filename]_IAMGE      // IMAGE dir
+  │  └─ [.bag filename]_1.png
+  │  └─ [.bag filename]_2.png
+  ├─ [.bag filename]_VIDEO.avi    // VIDEO
 ```
+IMAGEs and VIDEOs will be placed in the same dir with ".bag" file
