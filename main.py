@@ -15,7 +15,7 @@ def extract_frames(bag_file, img_size=(1280, 720), fps=30, vcheck='n'):
     imgdir_name = os.path.join(opt.dir, f'[{file_name}]_IMAGE')
     if not os.path.exists(imgdir_name):
         os.makedirs(imgdir_name)
-    video = cv2.VideoWriter(os.path.join(opt.dir, f'[{file_name}]_VIDEO.avi'),
+    video = cv2.VideoWriter(os.path.join(opt.dir, f'[{file_name}]_VIDEO.avi'),  // make class to save video
                             cv2.VideoWriter_fourcc(*'MJPG'),
                             fps,
                             img_size)
@@ -24,10 +24,7 @@ def extract_frames(bag_file, img_size=(1280, 720), fps=30, vcheck='n'):
     rs.config.enable_device_from_file(config, os.path.join(opt.dir, bag_file), repeat_playback=False)
     pipeline = rs.pipeline()
     pipeline.start(config)
-
-    config.enable_stream(rs.stream.depth, img_size[0], img_size[1], rs.format.z16, fps)
     config.enable_stream(rs.stream.color, img_size[0], img_size[1], rs.format.bgr8, fps)
-
     align_to = rs.stream.color
     align = rs.align(align_to)
 
@@ -47,7 +44,7 @@ def extract_frames(bag_file, img_size=(1280, 720), fps=30, vcheck='n'):
         color_image = np.asanyarray(color_frame.get_data())
 
         color_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
-        cv2.imwrite(os.path.join(opt.dir, f'[{file_name}]_IMAGE', f'{file_name}_{i + 1}.png'),
+        cv2.imwrite(os.path.join(opt.dir, f'[{file_name}]_IMAGE', f'{file_name}_{i + 1}.png'),  // save image
                     color_image,
                     [cv2.IMWRITE_PNG_COMPRESSION, 0])
         if vcheck.lower() != 'n' and vcheck.lower() != 'no':
