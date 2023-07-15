@@ -52,8 +52,6 @@ def extract_frames(bag_file, img_size=(1280, 720), fps=30, vcheck='n'):
                     [cv2.IMWRITE_PNG_COMPRESSION, 0])
         if vcheck.lower() != 'n' and vcheck.lower() != 'no':
             video.write(color_image)
-        # Press S on keyboard
-        # to stop the process
         i += 1
     video.release()
 
